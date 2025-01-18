@@ -1,5 +1,6 @@
 package src;
 
+import static java.lang.Math.exp;
 import static java.lang.Math.min;
 
 public class BodyBattery {
@@ -55,7 +56,8 @@ public class BodyBattery {
                     }
 
                     System.out.printf("%-7d %-20.2f %-15.2f\n", i, recargaEscalada, bateriaAtual);
-                } else if (i == etapas) {
+                }
+                else if (i == etapas) {
                     // Última etapa: aplicar a recarga restante para atingir o limite
                     double recargaEscalada = limiteMaximo - bateriaAtual;
 
@@ -78,7 +80,7 @@ public class BodyBattery {
                 double capacidadeRestante = limiteMaximo - bateriaAtual;
 
                 // Calcula a recarga escalada usando a função exponencial
-                double recargaEscalada = capacidadeRestante * (1 - Math.exp(-k * recargaPorEtapa));
+                double recargaEscalada = capacidadeRestante * (1 - exp(-k * recargaPorEtapa));
 
                 // Calcula a recarga que precisa ser reservada para as últimas etapas
                 double recargaToReserve = (limiteMaximo - bateriaAtual) / etapasLimite;
